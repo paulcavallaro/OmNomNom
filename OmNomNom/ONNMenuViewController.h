@@ -11,7 +11,10 @@
 @interface ONNMenuViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *cafeLabel;
-@property (weak, nonatomic) IBOutlet UIScrollView *menuScrolView;
+@property (weak, nonatomic) IBOutlet UIScrollView *menuScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *menuPageControl;
+@property (weak, nonatomic) IBOutlet UITextView *menuTextView;
+
+- (IBAction)changePage;
 
 @end
