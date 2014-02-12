@@ -7,6 +7,7 @@
 //
 
 #import "ONNMenuViewController.h"
+#import <Parse/Parse.h>
 
 @interface ONNMenuViewController ()
 
@@ -27,6 +28,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
+    [FBRequestConnection startWithGraphPath:@"fbnyccafe/posts"
+                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                              if (!error) {
+                                  // Sucess! Include your code to handle the results here
+                                  NSString *last_post= [(NSArray *)[result data] objectAtIndex:0][@"message"];
+                                  UITextView *textView = [[UITextView alloc] init];
+                                  [textView setText:last_post];
+                                  [self.menuScrolView addSubview:textView];
+                                  textView.frame = self.menuScrolView.frame;
+                                  //[self.menuScrolView sett
+                              } else {
+                                  // An error occurred, we need to handle the error
+                                  // See: https://developers.facebook.com/docs/ios/errors
+                              }
+                          }];
 }
 
 - (void)didReceiveMemoryWarning
