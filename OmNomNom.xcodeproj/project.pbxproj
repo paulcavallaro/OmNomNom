@@ -248,6 +248,13 @@
 				CLASSPREFIX = ONN;
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
+					6551FF6518ABEBF5008C7332 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					6551FF8018ABEBF5008C7332 = {
 						TestTargetID = 6551FF6518ABEBF5008C7332;
 					};

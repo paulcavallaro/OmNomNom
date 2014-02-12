@@ -17,6 +17,7 @@
     
     if (fromDisk == nil) {
         [self downloadMenu:completionHandler];
+        return;
     }
     
     completionHandler(fromDisk);
@@ -55,6 +56,11 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return [documentsDirectory stringByAppendingPathComponent:@"nyc.txt"];
+}
+
++(void)deleteMenu {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:[self filePath] error:/*yolohackathon*/nil];
 }
 
 @end

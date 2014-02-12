@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "ONNAppDelegate.h"
 #import "ONNMenuViewController.h"
+#import "ONNMenuUtils.h"
 
 @implementation ONNAppDelegate
 
@@ -31,10 +32,14 @@
     }];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    ONNMenuViewController *vc = [[ONNMenuViewController alloc] initWithNibName:@"ONNMenuViewController" bundle:nil];
-    self.window.rootViewController = vc;
-    [self.window makeKeyAndVisible];
+    
+    if (application.applicationState != UIApplicationStateBackground) {
+        ONNMenuViewController *vc = [[ONNMenuViewController alloc] initWithNibName:@"ONNMenuViewController" bundle:nil];
+        self.window.rootViewController = vc;
+        [self.window makeKeyAndVisible];
+    }
+    
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 
@@ -56,6 +61,13 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     return basePath;
+}
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [ONNMenuUtils downloadMenu:^(NSString * menu) {
+        // Don't need to do anything here
+        
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
