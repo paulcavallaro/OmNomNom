@@ -8,6 +8,7 @@
 
 #import "ONNMenuViewController.h"
 #import <Parse/Parse.h>
+#import "ONNMenuUtils.h"
 
 @interface ONNMenuViewController ()
 
@@ -29,19 +30,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    
-    [FBRequestConnection startWithGraphPath:@"fbnyccafe/posts"
-                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                              if (!error) {
-                                  // Sucess! Include your code to handle the results here
-                                  NSString *last_post= [(NSArray *)[result data] objectAtIndex:0][@"message"];
-                                  NSString *more_post = [last_post stringByAppendingString:last_post];
-                                  self.menuTextView.text = more_post;
-                              } else {
-                                  // An error occurred, we need to handle the error
-                                  // See: https://developers.facebook.com/docs/ios/errors
-                              }
-                          }];
+    [ONNMenuUtils getMenu:^(NSString * last_post) {
+        if (YES){//!error) {
+            // Sucess! Include your code to handle the results here
+            self.menuTextView.text = last_post;
+        } else {
+            // An error occurred, we need to handle the error
+            // See: https://developers.facebook.com/docs/ios/errors
+        }
+    }];
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {

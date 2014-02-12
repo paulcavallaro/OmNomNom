@@ -32,6 +32,7 @@
 		BB22D6BE18ABF456006C5694 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6BD18ABF456006C5694 /* StoreKit.framework */; };
 		BB22D6C018ABF45E006C5694 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6BF18ABF45E006C5694 /* SystemConfiguration.framework */; };
 		BB22D6C418ABF6CD006C5694 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6C318ABF6CC006C5694 /* FacebookSDK.framework */; };
+		BB2E715E18AC105F0062FC14 /* ONNMenuUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2E715D18AC105F0062FC14 /* ONNMenuUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		BB22D6BD18ABF456006C5694 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BB22D6BF18ABF45E006C5694 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB22D6C318ABF6CC006C5694 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		BB2E715C18AC105F0062FC14 /* ONNMenuUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuUtils.h; sourceTree = "<group>"; };
+		BB2E715D18AC105F0062FC14 /* ONNMenuUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 				6551FF7918ABEBF5008C7332 /* ONNAppDelegate.m */,
 				6551FF7B18ABEBF5008C7332 /* Images.xcassets */,
 				6551FF7018ABEBF5008C7332 /* Supporting Files */,
+				BB2E715C18AC105F0062FC14 /* ONNMenuUtils.h */,
+				BB2E715D18AC105F0062FC14 /* ONNMenuUtils.m */,
 			);
 			path = OmNomNom;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 			files = (
 				6551FF7A18ABEBF5008C7332 /* ONNAppDelegate.m in Sources */,
 				6551FFA218ABF8FB008C7332 /* ONNMenuViewController.m in Sources */,
+				BB2E715E18AC105F0062FC14 /* ONNMenuUtils.m in Sources */,
 				6551FF7618ABEBF5008C7332 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
