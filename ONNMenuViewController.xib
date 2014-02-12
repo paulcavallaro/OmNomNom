@@ -4,11 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ONNMenuView">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ONNMenuViewController">
             <connections>
-                <outlet property="cafeLabel" destination="dw8-nD-IEl" id="1PD-mm-zXj"/>
-                <outlet property="menu" destination="Wst-UP-1VS" id="XM0-QZ-k5g"/>
-                <outlet property="pageControl" destination="cUJ-v4-xSc" id="VPY-Lf-cn6"/>
+                <outlet property="cafeLabel" destination="dw8-nD-IEl" id="Vqo-mj-grG"/>
+                <outlet property="menuPageControl" destination="cUJ-v4-xSc" id="Lyd-WU-FS8"/>
+                <outlet property="menuScrolView" destination="Wst-UP-1VS" id="n2f-Qw-h0A"/>
+                <outlet property="view" destination="1" id="Qdt-Rx-28Y"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

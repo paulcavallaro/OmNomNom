@@ -18,7 +18,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.view = [[ONNMenuView alloc] init];
         // Custom initialization
     }
     return self;

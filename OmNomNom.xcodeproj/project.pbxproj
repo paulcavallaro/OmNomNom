@@ -19,8 +19,7 @@
 		6551FF8518ABEBF5008C7332 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6551FF6D18ABEBF5008C7332 /* UIKit.framework */; };
 		6551FF8D18ABEBF5008C7332 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6551FF8B18ABEBF5008C7332 /* InfoPlist.strings */; };
 		6551FF8F18ABEBF5008C7332 /* OmNomNomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FF8E18ABEBF5008C7332 /* OmNomNomTests.m */; };
-		6551FF9C18ABF3A5008C7332 /* ONNMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6551FF9B18ABF3A5008C7332 /* ONNMenuView.xib */; };
-		6551FF9F18ABF462008C7332 /* ONNMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FF9E18ABF462008C7332 /* ONNMenuView.m */; };
+		6551FF9C18ABF3A5008C7332 /* ONNMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6551FF9B18ABF3A5008C7332 /* ONNMenuViewController.xib */; };
 		6551FFA218ABF8FB008C7332 /* ONNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FFA118ABF8FB008C7332 /* ONNMenuViewController.m */; };
 		BB22D6AE18ABF3C9006C5694 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6AD18ABF3C9006C5694 /* Parse.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		BB22D6B018ABF40A006C5694 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */; };
@@ -62,9 +61,7 @@
 		6551FF8A18ABEBF5008C7332 /* OmNomNomTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OmNomNomTests-Info.plist"; sourceTree = "<group>"; };
 		6551FF8C18ABEBF5008C7332 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6551FF8E18ABEBF5008C7332 /* OmNomNomTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OmNomNomTests.m; sourceTree = "<group>"; };
-		6551FF9B18ABF3A5008C7332 /* ONNMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONNMenuView.xib; sourceTree = "<group>"; };
-		6551FF9D18ABF462008C7332 /* ONNMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuView.h; sourceTree = "<group>"; };
-		6551FF9E18ABF462008C7332 /* ONNMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuView.m; sourceTree = "<group>"; };
+		6551FF9B18ABF3A5008C7332 /* ONNMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ONNMenuViewController.xib; path = ../ONNMenuViewController.xib; sourceTree = "<group>"; };
 		6551FFA018ABF8FB008C7332 /* ONNMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuViewController.h; sourceTree = "<group>"; };
 		6551FFA118ABF8FB008C7332 /* ONNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuViewController.m; sourceTree = "<group>"; };
 		BB22D6AD18ABF3C9006C5694 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -118,7 +115,6 @@
 		6551FF5D18ABEBF5008C7332 = {
 			isa = PBXGroup;
 			children = (
-				6551FF9B18ABF3A5008C7332 /* ONNMenuView.xib */,
 				6551FF6F18ABEBF5008C7332 /* OmNomNom */,
 				6551FF8818ABEBF5008C7332 /* OmNomNomTests */,
 				6551FF6818ABEBF5008C7332 /* Frameworks */,
@@ -160,8 +156,7 @@
 		6551FF6F18ABEBF5008C7332 /* OmNomNom */ = {
 			isa = PBXGroup;
 			children = (
-				6551FF9D18ABF462008C7332 /* ONNMenuView.h */,
-				6551FF9E18ABF462008C7332 /* ONNMenuView.m */,
+				6551FF9B18ABF3A5008C7332 /* ONNMenuViewController.xib */,
 				6551FFA018ABF8FB008C7332 /* ONNMenuViewController.h */,
 				6551FFA118ABF8FB008C7332 /* ONNMenuViewController.m */,
 				6551FF7818ABEBF5008C7332 /* ONNAppDelegate.h */,
@@ -278,7 +273,7 @@
 			files = (
 				6551FF7418ABEBF5008C7332 /* InfoPlist.strings in Resources */,
 				6551FF7C18ABEBF5008C7332 /* Images.xcassets in Resources */,
-				6551FF9C18ABF3A5008C7332 /* ONNMenuView.xib in Resources */,
+				6551FF9C18ABF3A5008C7332 /* ONNMenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +294,6 @@
 			files = (
 				6551FF7A18ABEBF5008C7332 /* ONNAppDelegate.m in Sources */,
 				6551FFA218ABF8FB008C7332 /* ONNMenuViewController.m in Sources */,
-				6551FF9F18ABF462008C7332 /* ONNMenuView.m in Sources */,
 				6551FF7618ABEBF5008C7332 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

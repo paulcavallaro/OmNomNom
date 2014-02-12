@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ONNMenuView.h"
 
 @interface ONNMenuViewController : UIViewController
 
-@property (nonatomic) ONNMenuView *view;
+@property (weak, nonatomic) IBOutlet UILabel *cafeLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *menuScrolView;
+@property (weak, nonatomic) IBOutlet UIPageControl *menuPageControl;
 
 @end

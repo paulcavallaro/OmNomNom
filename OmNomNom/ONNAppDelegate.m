@@ -35,7 +35,6 @@
                               if (!error) {
                                   // Sucess! Include your code to handle the results here
                                   NSString *last_post= [(NSArray *)[result data] objectAtIndex:0][@"message"];
-                                  
                               } else {
                                   // An error occurred, we need to handle the error
                                   // See: https://developers.facebook.com/docs/ios/errors   
@@ -44,7 +43,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    ONNMenuViewController *vc = [[ONNMenuViewController alloc] init];
+    ONNMenuViewController *vc = [[ONNMenuViewController alloc] initWithNibName:@"ONNMenuViewController" bundle:nil];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     return YES;
