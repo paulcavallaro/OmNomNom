@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ONNMenuViewController : UIViewController
+@interface ONNMenuViewController : UIViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *cafeLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *menuScrollView;
