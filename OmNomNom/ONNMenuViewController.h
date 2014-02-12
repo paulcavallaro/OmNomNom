@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ONNMenuView.h"
 
 @interface ONNMenuViewController : UIViewController
+
+@property (nonatomic) ONNMenuView *view;
 
 @end

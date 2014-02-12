@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "ONNAppDelegate.h"
+#import "ONNMenuViewController.h"
 
 @implementation ONNAppDelegate
 
@@ -42,8 +43,9 @@
                           }];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+
+    ONNMenuViewController *vc = [[ONNMenuViewController alloc] init];
+    self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     return YES;
 }
