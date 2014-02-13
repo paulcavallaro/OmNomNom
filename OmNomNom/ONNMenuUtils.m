@@ -12,22 +12,29 @@
 
 @implementation ONNMenuUtils
 
++(NSString *) stringForCafe:(CafeName)cafeName
+{
+    switch (cafeName) {
+        case SEA:
+            return @"Bits & Bytes (Seattle)";
+        case EPIC:
+            return @"Epic (MPK)";
+        case LTD:
+            return @"Livin' The Dream (MPK)";
+        case NYC:
+            return @"Yolo Café (NYC)";
+    }
+}
+
 +(void) getMenuForCafe:(CafeName)cafeName completion:(void (^)(NSString *))completionHandler
 {
     NSString *fromDisk = [self readFromFileForCafe:cafeName];
     
     if (fromDisk == nil) {
         [self downloadMenuForCafe:cafeName completion:completionHandler];
-        return;
+    } else {
+        completionHandler(fromDisk);
     }
-    
-    completionHandler(fromDisk);
-    [self downloadMenuForCafe:cafeName completion:^(NSString *newMenu) {
-        if ([newMenu compare:fromDisk] != NSOrderedSame) {
-            completionHandler(newMenu);
-        }
-    }];
-
 }
 
 +(void) downloadMenuForCafe:(CafeName)cafeName completion:(void (^)(NSString *))completionHandler

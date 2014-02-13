@@ -20,4 +20,6 @@ typedef NS_ENUM(NSInteger, CafeName) {
 +(void) getMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSString *) ) completionHandler;
 +(void) downloadMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSString *) ) completionHandler;
 +(void) deleteMenuForCafe:(CafeName)cafeName;
++(NSString *) stringForCafe:(CafeName)cafeName;
+
 @end

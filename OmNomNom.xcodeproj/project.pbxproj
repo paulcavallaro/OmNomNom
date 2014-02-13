@@ -19,9 +19,9 @@
 		6551FF8518ABEBF5008C7332 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6551FF6D18ABEBF5008C7332 /* UIKit.framework */; };
 		6551FF8D18ABEBF5008C7332 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6551FF8B18ABEBF5008C7332 /* InfoPlist.strings */; };
 		6551FF8F18ABEBF5008C7332 /* OmNomNomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FF8E18ABEBF5008C7332 /* OmNomNomTests.m */; };
-		6551FFAB18AC3178008C7332 /* ONNSingleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FFA918AC3178008C7332 /* ONNSingleMenuViewController.m */; };
-		6551FFAC18AC3178008C7332 /* ONNSingleMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6551FFAA18AC3178008C7332 /* ONNSingleMenuViewController.xib */; };
 		6551FFB518AC332C008C7332 /* ONNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FFB318AC332C008C7332 /* ONNMainViewController.m */; };
+		65CB9BDC18AD2C67000E1B52 /* ONNMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */; };
+		65CB9BDF18AD2CDB000E1B52 /* ONNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */; };
 		BB22D6AE18ABF3C9006C5694 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6AD18ABF3C9006C5694 /* Parse.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		BB22D6B018ABF40A006C5694 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */; };
 		BB22D6B218ABF411006C5694 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6B118ABF411006C5694 /* CFNetwork.framework */; };
@@ -63,11 +63,12 @@
 		6551FF8A18ABEBF5008C7332 /* OmNomNomTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OmNomNomTests-Info.plist"; sourceTree = "<group>"; };
 		6551FF8C18ABEBF5008C7332 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6551FF8E18ABEBF5008C7332 /* OmNomNomTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OmNomNomTests.m; sourceTree = "<group>"; };
-		6551FFA818AC3178008C7332 /* ONNSingleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNSingleMenuViewController.h; sourceTree = "<group>"; };
-		6551FFA918AC3178008C7332 /* ONNSingleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNSingleMenuViewController.m; sourceTree = "<group>"; };
-		6551FFAA18AC3178008C7332 /* ONNSingleMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONNSingleMenuViewController.xib; sourceTree = "<group>"; };
 		6551FFB218AC332C008C7332 /* ONNMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMainViewController.h; sourceTree = "<group>"; };
 		6551FFB318AC332C008C7332 /* ONNMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMainViewController.m; sourceTree = "<group>"; };
+		65CB9BDA18AD2C67000E1B52 /* ONNMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuView.h; sourceTree = "<group>"; };
+		65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuView.m; sourceTree = "<group>"; };
+		65CB9BDD18AD2CDB000E1B52 /* ONNMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuViewController.h; sourceTree = "<group>"; };
+		65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuViewController.m; sourceTree = "<group>"; };
 		BB22D6AD18ABF3C9006C5694 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB22D6B118ABF411006C5694 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -164,9 +165,10 @@
 			children = (
 				6551FFB218AC332C008C7332 /* ONNMainViewController.h */,
 				6551FFB318AC332C008C7332 /* ONNMainViewController.m */,
-				6551FFA818AC3178008C7332 /* ONNSingleMenuViewController.h */,
-				6551FFA918AC3178008C7332 /* ONNSingleMenuViewController.m */,
-				6551FFAA18AC3178008C7332 /* ONNSingleMenuViewController.xib */,
+				65CB9BDA18AD2C67000E1B52 /* ONNMenuView.h */,
+				65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */,
+				65CB9BDD18AD2CDB000E1B52 /* ONNMenuViewController.h */,
+				65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */,
 				6551FF7818ABEBF5008C7332 /* ONNAppDelegate.h */,
 				6551FF7918ABEBF5008C7332 /* ONNAppDelegate.m */,
 				6551FF7B18ABEBF5008C7332 /* Images.xcassets */,
@@ -289,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6551FF7418ABEBF5008C7332 /* InfoPlist.strings in Resources */,
-				6551FFAC18AC3178008C7332 /* ONNSingleMenuViewController.xib in Resources */,
 				6551FF7C18ABEBF5008C7332 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,8 +311,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6551FF7A18ABEBF5008C7332 /* ONNAppDelegate.m in Sources */,
+				65CB9BDC18AD2C67000E1B52 /* ONNMenuView.m in Sources */,
+				65CB9BDF18AD2CDB000E1B52 /* ONNMenuViewController.m in Sources */,
 				6551FFB518AC332C008C7332 /* ONNMainViewController.m in Sources */,
-				6551FFAB18AC3178008C7332 /* ONNSingleMenuViewController.m in Sources */,
 				BB2E715E18AC105F0062FC14 /* ONNMenuUtils.m in Sources */,
 				6551FF7618ABEBF5008C7332 /* main.m in Sources */,
 			);

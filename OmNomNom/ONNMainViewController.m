@@ -7,7 +7,7 @@
 //
 
 #import "ONNMainViewController.h"
-#import "ONNSingleMenuViewController.h"
+#import "ONNMenuViewController.h"
 #import "ONNMenuUtils.h"
 
 @interface ONNMainViewController ()
@@ -35,8 +35,9 @@ const int kNumMenus = SEA + 1;
 
     self.pageController.dataSource = self;
     [self.pageController.view setFrame:self.view.frame];
+    [self.pageController.view setBackgroundColor:[UIColor whiteColor]];
 
-    NSArray *viewControllers = [NSArray arrayWithObject:[self viewControllerAtIndex:0]];
+    NSArray *viewControllers = [NSArray arrayWithObject:[self viewControllerAtIndex:0 withFrame:self.view.frame]];
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
 
     [self addChildViewController:self.pageController];
@@ -61,32 +62,33 @@ const int kNumMenus = SEA + 1;
     return 0;
 }
 
-- (ONNSingleMenuViewController *)viewControllerAtIndex:(NSUInteger)index {
-    ONNSingleMenuViewController *singleMenuVC = [[ONNSingleMenuViewController alloc] initWithNibName:@"ONNSingleMenuViewController" bundle:nil];
+- (ONNMenuViewController *)viewControllerAtIndex:(NSUInteger)index withFrame:(CGRect)frame {
+    ONNMenuViewController *singleMenuVC = [[ONNMenuViewController alloc] init];
     singleMenuVC.idx = index;
-    singleMenuVC.cafeName = index;
+    singleMenuVC.cafeName = (CafeName)index;
+    singleMenuVC.view.frame = frame;
 
     return singleMenuVC;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    const int index = ((ONNSingleMenuViewController *)viewController).idx;
+    const int index = ((ONNMenuViewController *)viewController).idx;
     if (index == kNumMenus - 1) {
         return nil;
     } else {
-        return [self viewControllerAtIndex:(index+1)];
+        return [self viewControllerAtIndex:(index+1) withFrame:self.view.frame];
     }
 }
 
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    const int index = ((ONNSingleMenuViewController *)viewController).idx;
+    const int index = ((ONNMenuViewController *)viewController).idx;
     if (index == 0) {
         return nil;
     } else {
-        return [self viewControllerAtIndex:(index-1)];
+        return [self viewControllerAtIndex:(index-1) withFrame:pageViewController.view.frame];
     }
 }
 
