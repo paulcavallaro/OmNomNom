@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, CafeName) {
-    EPIC,
     NYC,
+    EPIC,
     LTD,
     SEA,
 };
