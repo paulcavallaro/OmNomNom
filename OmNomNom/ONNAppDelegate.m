@@ -8,7 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "ONNAppDelegate.h"
-#import "ONNMenuViewController.h"
+#import "ONNMainViewController.h"
 #import "ONNMenuUtils.h"
 
 @implementation ONNAppDelegate
@@ -18,9 +18,9 @@
     [Parse setApplicationId:@"eudS6DzxZFl48AasbVGRikoYRCne5ZKTAJYtjxRc"
                   clientKey:@"6FA8WIsV5EjoWXWGLSubM7GfMhQtAGDoKCXHOVgS"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
+
     [PFFacebookUtils initializeFacebook];
-    
+
     [PFFacebookUtils logInWithPermissions:@[] block:^(PFUser *user, NSError *error) {
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
@@ -30,16 +30,17 @@
             NSLog(@"User logged in through Facebook!");
         }
     }];
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+
     if (application.applicationState != UIApplicationStateBackground) {
-        ONNMenuViewController *vc = [[ONNMenuViewController alloc] initWithNibName:@"ONNMenuViewController" bundle:nil];
-        self.window.rootViewController = vc;
-        [self.window makeKeyAndVisible];
+      ONNMainViewController *vc = [[ONNMainViewController alloc] init];
+      self.window.rootViewController = vc;
+      [self.window makeKeyAndVisible];
     }
-    
+
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+
     return YES;
 }
 
