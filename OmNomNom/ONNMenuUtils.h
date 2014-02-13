@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, CafeName) {
+    EPIC,
+    NYC,
+    LTD,
+    SEA,
+};
+
 @interface ONNMenuUtils : NSObject
 
-+(void) getMenu:(void ( ^ )(NSString *) ) completionHandler;
-+(void) downloadMenu:(void ( ^ )(NSString *) ) completionHandler;
-+(void) deleteMenu;
++(void) getMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSString *) ) completionHandler;
++(void) downloadMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSString *) ) completionHandler;
++(void) deleteMenuForCafe:(CafeName)cafeName;
 @end

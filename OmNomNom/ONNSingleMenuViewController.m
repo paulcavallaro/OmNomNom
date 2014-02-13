@@ -28,9 +28,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [ONNMenuUtils getMenu:^(NSString * last_post) {
+    [ONNMenuUtils getMenuForCafe:self.cafeName completion:^(NSString * last_post) {
         self.textView.text = last_post;
     }];
+    switch (self.cafeName) {
+        case SEA:
+            self.label.text = @"Bits & Bytes (Seattle)";
+            break;
+        case EPIC:
+            self.label.text = @"Epic (MPK)";
+            break;
+        case LTD:
+            self.label.text = @"Livin' The Dream (MPK)";
+            break;
+        case NYC:
+            self.label.text = @"Yolo Café (NYC)";
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning

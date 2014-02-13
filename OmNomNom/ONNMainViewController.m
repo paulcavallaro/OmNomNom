@@ -8,6 +8,7 @@
 
 #import "ONNMainViewController.h"
 #import "ONNSingleMenuViewController.h"
+#import "ONNMenuUtils.h"
 
 @interface ONNMainViewController ()
 
@@ -15,7 +16,7 @@
 
 @implementation ONNMainViewController
 
-const int kNumMenus = 4;
+const int kNumMenus = SEA + 1;
 
 - (id)init
 {
@@ -52,7 +53,7 @@ const int kNumMenus = 4;
 // UIPageViewControllerDataSource
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return kNumMenus;
+    return SEA + 1;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
@@ -63,6 +64,7 @@ const int kNumMenus = 4;
 - (ONNSingleMenuViewController *)viewControllerAtIndex:(NSUInteger)index {
     ONNSingleMenuViewController *singleMenuVC = [[ONNSingleMenuViewController alloc] initWithNibName:@"ONNSingleMenuViewController" bundle:nil];
     singleMenuVC.idx = index;
+    singleMenuVC.cafeName = index;
 
     return singleMenuVC;
 }
