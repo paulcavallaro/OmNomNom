@@ -30,6 +30,9 @@
     // Do any additional setup after loading the view from its nib.
     [ONNMenuUtils getMenuForCafe:self.cafeName completion:^(NSString * last_post) {
         self.textView.text = last_post;
+        
+        // Bug? http://stackoverflow.com/questions/19049917/uitextview-font-is-being-reset-after-settext
+        [self.textView setFont:[UIFont systemFontOfSize:16.0]];
     }];
     switch (self.cafeName) {
         case SEA:
