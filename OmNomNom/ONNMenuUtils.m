@@ -35,6 +35,36 @@
     switch (cafeName) {
         case NYC:
         {
+            NSString *str=@"http://www.elliotlynde.com/nyc_last.txt";
+            NSURL *url=[NSURL URLWithString:str];
+            NSData *data=[NSData dataWithContentsOfURL:url];
+            NSError *error=nil;
+            NSDictionary *response=(NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:
+                         NSJSONReadingMutableContainers error:&error];
+            
+            NSString *menu = @"";
+            menu = [menu stringByAppendingString:response[@"meal"]];
+            menu = [menu stringByAppendingString:@"\n"];
+            menu = [menu stringByAppendingString:response[@"theme"]];
+            menu = [menu stringByAppendingString:@"\n"];
+            menu = [menu stringByAppendingString:@"\n"];
+
+            
+            for (NSDictionary * section in response[@"sections"]) {
+                menu = [menu stringByAppendingString:section[@"name"]];
+                menu = [menu stringByAppendingString:@"\n"];
+                for (NSString * item in section[@"items"]) {
+                    menu = [menu stringByAppendingString:item];
+                    menu = [menu stringByAppendingString:@"\n"];
+                }
+                menu = [menu stringByAppendingString:@"\n"];
+                menu = [menu stringByAppendingString:@"\n"];
+
+            }
+            completionHandler(menu);
+            break;
+            NSLog(@"Your JSON Object: %@ Or Error is: %@", response, error);
+            
             [FBRequestConnection startWithGraphPath:@"fbnyccafe/posts"
                                   completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                                       NSString *last_post= [(NSArray *)[result data] objectAtIndex:0][@"message"];
