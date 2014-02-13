@@ -35,7 +35,7 @@
     switch (cafeName) {
         case NYC:
         {
-            NSString *str=@"http://www.elliotlynde.com/nyc_last.txt";
+            /*NSString *str=@"http://www.elliotlynde.com/nyc_last.txt";
             NSURL *url=[NSURL URLWithString:str];
             NSData *data=[NSData dataWithContentsOfURL:url];
             NSError *error=nil;
@@ -62,7 +62,7 @@
             }
             completionHandler(menu);
             break;
-            NSLog(@"Your JSON Object: %@ Or Error is: %@", response, error);
+            NSLog(@"Your JSON Object: %@ Or Error is: %@", response, error);*/
             
             [FBRequestConnection startWithGraphPath:@"fbnyccafe/posts"
                                   completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
