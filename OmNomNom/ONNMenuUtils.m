@@ -58,7 +58,6 @@
                     menu = [menu stringByAppendingString:@"\n"];
                 }
                 menu = [menu stringByAppendingString:@"\n"];
-                menu = [menu stringByAppendingString:@"\n"];
 
             }
             completionHandler(menu);
