@@ -16,7 +16,7 @@
 
 @implementation ONNMainViewController
 
-const int kNumMenus = SEA + 1;
+const int kNumMenus = LTD + 1;
 
 - (id)init
 {
@@ -54,7 +54,7 @@ const int kNumMenus = SEA + 1;
 // UIPageViewControllerDataSource
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return SEA + 1;
+    return LTD + 1;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController

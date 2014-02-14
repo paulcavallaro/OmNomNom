@@ -26,6 +26,7 @@ UITextView *_textView;
 {
     _label.text = cafeName;
     _textView.text = menu;
+    _textView.font = [UIFont systemFontOfSize:16.0];
     [_label sizeToFit];
     [_textView sizeToFit];
     [self setNeedsLayout];
@@ -34,6 +35,7 @@ UITextView *_textView;
 - (void) _initialize
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.font = [UIFont boldSystemFontOfSize:18.0];
     label.backgroundColor = [UIColor whiteColor];
     label.text = NSLocalizedString(@"Loading...", @"Loading message of ONNMenuView");
     [label sizeToFit];

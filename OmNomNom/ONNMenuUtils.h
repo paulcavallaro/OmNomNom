@@ -12,7 +12,6 @@ typedef NS_ENUM(NSInteger, CafeName) {
     NYC,
     EPIC,
     LTD,
-    SEA,
 };
 
 @interface ONNMenuUtils : NSObject

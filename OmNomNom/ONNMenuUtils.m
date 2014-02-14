@@ -15,8 +15,6 @@
 +(NSString *) stringForCafe:(CafeName)cafeName
 {
     switch (cafeName) {
-        case SEA:
-            return @"Bits & Bytes (Seattle)";
         case EPIC:
             return @"Epic (MPK)";
         case LTD:
@@ -29,7 +27,6 @@
 +(void) getMenuForCafe:(CafeName)cafeName completion:(void (^)(NSString *))completionHandler
 {
     NSString *fromDisk = [self readFromFileForCafe:cafeName];
-    
     if (fromDisk == nil) {
         [self downloadMenuForCafe:cafeName completion:completionHandler];
     } else {
@@ -39,69 +36,50 @@
 
 +(void) downloadMenuForCafe:(CafeName)cafeName completion:(void (^)(NSString *))completionHandler
 {
-    switch (cafeName) {
-        case NYC:
-        {
-            /*NSString *str=@"http://www.elliotlynde.com/nyc_last.txt";
-            NSURL *url=[NSURL URLWithString:str];
-            NSData *data=[NSData dataWithContentsOfURL:url];
-            NSError *error=nil;
-            NSDictionary *response=(NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:
-                         NSJSONReadingMutableContainers error:&error];
-            
-            NSString *menu = @"";
-            menu = [menu stringByAppendingString:response[@"meal"]];
-            menu = [menu stringByAppendingString:@"\n"];
-            menu = [menu stringByAppendingString:response[@"theme"]];
-            menu = [menu stringByAppendingString:@"\n"];
-            menu = [menu stringByAppendingString:@"\n"];
+    NSDictionary *response= [self downloadMenuJSON:cafeName];
+    
+    NSString *menu = [self getMenuAsString:response];
+    [self writeToFile:menu forCafe:cafeName];
+    completionHandler(menu);
+}
 
-            
-            for (NSDictionary * section in response[@"sections"]) {
-                menu = [menu stringByAppendingString:section[@"name"]];
-                menu = [menu stringByAppendingString:@"\n"];
-                for (NSString * item in section[@"items"]) {
-                    menu = [menu stringByAppendingString:item];
-                    menu = [menu stringByAppendingString:@"\n"];
-                }
-                menu = [menu stringByAppendingString:@"\n"];
-
-            }
-            completionHandler(menu);
-            break;
-            NSLog(@"Your JSON Object: %@ Or Error is: %@", response, error);*/
-            
-            [FBRequestConnection startWithGraphPath:@"fbnyccafe/posts"
-                                  completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                      NSString *last_post= [(NSArray *)[result data] objectAtIndex:0][@"message"];
-                                      [self writeToFile:last_post forCafe:cafeName];
-                                      completionHandler(last_post);
-                                  }];
-            break;
-        }
-        case LTD:
-        case EPIC:
-        {
-            // TODO(ptc) LTD and EPIC are the same for now
-            [FBRequestConnection startWithGraphPath:@"FacebookCulinaryTeam/posts"
-                                  completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                      NSString *last_post= [(NSArray *)[result data] objectAtIndex:0][@"message"];
-                                      [self writeToFile:last_post forCafe:cafeName];
-                                      completionHandler(last_post);
-                                  }];
-            break;
-        }
-        case SEA:
-        {
-            [FBRequestConnection startWithGraphPath:@"fbseattlecafe/posts"
-                                  completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                      NSString *last_post= [(NSArray *)[result data] objectAtIndex:0][@"message"];
-                                      [self writeToFile:last_post forCafe:cafeName];
-                                      completionHandler(last_post);
-                                  }];
-            break;
-        }
++(NSDictionary *)downloadMenuJSON:(CafeName) cafe {
+    NSString *cafe_name = @"";
+    
+    if (cafe == NYC) {
+        cafe_name = @"nyc";
+    } else if (cafe == LTD) {
+        cafe_name = @"ltd";
+    } else if (cafe == EPIC) {
+        cafe_name = @"epic";
     }
+    
+    NSString *str=[NSString stringWithFormat:@"http://www.elliotlynde.com/nomparse/%@.json", cafe_name];
+    NSURL *url=[NSURL URLWithString:str];
+    NSData *data=[NSData dataWithContentsOfURL:url];
+    NSError *error=nil;
+    return (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:
+                                            NSJSONReadingMutableContainers error:&error];
+}
+
++(NSString *)getMenuAsString:(NSDictionary *)menu_json {
+    NSString *menu = @"";
+    menu = [menu stringByAppendingString:menu_json[@"header"]];
+    menu = [menu stringByAppendingString:@"\n"];
+    menu = [menu stringByAppendingString:@"\n"];    
+    
+    for (NSDictionary * section in menu_json[@"sections"]) {
+        menu = [menu stringByAppendingString:section[@"name"]];
+        menu = [menu stringByAppendingString:@"\n"];
+        for (NSString * item in section[@"items"]) {
+            menu = [menu stringByAppendingString:item];
+            menu = [menu stringByAppendingString:@"\n"];
+        }
+        menu = [menu stringByAppendingString:@"\n"];
+        
+    }
+    
+    return menu;
 
 }
 
