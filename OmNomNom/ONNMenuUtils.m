@@ -24,31 +24,32 @@
     }
 }
 
-+(void) getMenuForCafe:(CafeName)cafeName completion:(void (^)(NSString *))completionHandler
++(void) getMenuForCafe:(CafeName)cafeName completion:(void (^)(NSDictionary *))completionHandler
 {
-    NSString *fromDisk = [self readFromFileForCafe:cafeName];
+    NSDictionary *fromDisk = [self readFromFileForCafe:cafeName];
     if (fromDisk == nil) {
         [self downloadMenuForCafe:cafeName completion:completionHandler];
     } else {
         completionHandler(fromDisk);
-        [self downloadMenuForCafe:cafeName completion:^(NSString * downloaded) {
-            if (![downloaded isEqualToString:fromDisk]) {
+        [self downloadMenuForCafe:cafeName completion:^(NSDictionary * downloaded) {
+            if (![downloaded isEqualToDictionary:fromDisk]) {
                 completionHandler(downloaded);
             }
         }];
     }
 }
 
-+(void) downloadMenuForCafe:(CafeName)cafeName completion:(void (^)(NSString *))completionHandler
++(void) downloadMenuForCafe:(CafeName)cafeName completion:(void (^)(NSDictionary *))completionHandler
 {
+    NSData *data = [self downloadMenuJSONData:cafeName];
+    
     NSDictionary *response= [self downloadMenuJSON:cafeName];
     
-    NSString *menu = [self getMenuAsString:response];
-    [self writeToFile:menu forCafe:cafeName];
-    completionHandler(menu);
+    [self writeToFile:data forCafe:cafeName];
+    completionHandler(response);
 }
 
-+(NSDictionary *)downloadMenuJSON:(CafeName) cafe {
++(NSData *)downloadMenuJSONData:(CafeName) cafe {
     NSString *cafe_name = @"";
     
     if (cafe == NYC) {
@@ -61,45 +62,30 @@
     
     NSString *str=[NSString stringWithFormat:@"http://www.elliotlynde.com/nomparse/%@.json", cafe_name];
     NSURL *url=[NSURL URLWithString:str];
-    NSData *data=[NSData dataWithContentsOfURL:url];
-    NSError *error=nil;
+    return [NSData dataWithContentsOfURL:url];
+}
+
++(NSDictionary *)downloadMenuJSON:(CafeName) cafe {
+    NSData *data = [self downloadMenuJSONData:cafe];
+    
+    NSError *error;
     return (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:
                                             NSJSONReadingMutableContainers error:&error];
 }
 
-+(NSString *)getMenuAsString:(NSDictionary *)menu_json {
-    NSString *menu = @"";
-    menu = [menu stringByAppendingString:menu_json[@"header"]];
-    menu = [menu stringByAppendingString:@"\n"];
-    menu = [menu stringByAppendingString:@"\n"];    
-    
-    for (NSDictionary * section in menu_json[@"sections"]) {
-        menu = [menu stringByAppendingString:section[@"name"]];
-        menu = [menu stringByAppendingString:@"\n"];
-        for (NSString * item in section[@"items"]) {
-            menu = [menu stringByAppendingString:item];
-            menu = [menu stringByAppendingString:@"\n"];
-        }
-        menu = [menu stringByAppendingString:@"\n"];
-        
-    }
-    
-    return menu;
 
++(void)writeToFile:(NSData *)menu forCafe:(CafeName)cafeName {
+    [menu writeToFile:[self filePathForCafeName:cafeName] atomically:YES];
 }
 
-+(void)writeToFile:(NSString *)menu forCafe:(CafeName)cafeName {
-    NSData* data = [menu dataUsingEncoding:NSUTF8StringEncoding];
-    [data writeToFile:[self filePathForCafeName:cafeName] atomically:YES];
-}
-
-+(NSString *)readFromFileForCafe:(CafeName)cafeName {
++(NSDictionary *)readFromFileForCafe:(CafeName)cafeName {
     NSData * data2 = [NSData dataWithContentsOfFile:[self filePathForCafeName:cafeName]];
     if (data2 == nil) {
         return nil;
     }
-    NSString* newStr = [NSString stringWithUTF8String:[data2 bytes]];
-    return newStr;
+    NSError *error;
+    return (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data2 options:
+                            NSJSONReadingMutableContainers error:&error];
 }
 
 +(NSString *)filePathForCafeName:(CafeName)cafeName {

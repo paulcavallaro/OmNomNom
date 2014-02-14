@@ -23,10 +23,10 @@ UIImageView *_backgroundImageView;
     return self;
 }
 
-- (void) setCafeName:(NSString *)cafeName andMenu:(NSString *)menu
+- (void) setCafeName:(NSString *)cafeName andMenu:(NSDictionary *)menu
 {
     _label.text = cafeName;
-    _textView.text = menu;
+    _textView.text = [self getMenuAsString:menu];
     _textView.font = [UIFont systemFontOfSize:16.0];
     [_label sizeToFit];
     [_textView sizeToFit];
@@ -69,6 +69,28 @@ UIImageView *_backgroundImageView;
     _label.frame = CGRectMake(startX, labelY, _label.frame.size.width, _label.frame.size.height);
     _textView.frame = CGRectMake(margin, textViewY, self.frame.size.width - margin * 2, self.frame.size.height - textViewY);
     _backgroundImageView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
+}
+
+
+-(NSString *)getMenuAsString:(NSDictionary *)menu_json {
+    NSString *menu = @"";
+    menu = [menu stringByAppendingString:menu_json[@"header"]];
+    menu = [menu stringByAppendingString:@"\n"];
+    menu = [menu stringByAppendingString:@"\n"];
+    
+    for (NSDictionary * section in menu_json[@"sections"]) {
+        menu = [menu stringByAppendingString:section[@"name"]];
+        menu = [menu stringByAppendingString:@"\n"];
+        for (NSString * item in section[@"items"]) {
+            menu = [menu stringByAppendingString:item];
+            menu = [menu stringByAppendingString:@"\n"];
+        }
+        menu = [menu stringByAppendingString:@"\n"];
+        
+    }
+    
+    return menu;
+    
 }
 
 @end

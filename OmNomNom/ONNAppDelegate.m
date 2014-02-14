@@ -67,7 +67,7 @@
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // Download all the menus
     for (NSInteger cafeName = EPIC; cafeName <= LTD; cafeName++) {
-        [ONNMenuUtils downloadMenuForCafe:cafeName completion:^(NSString * menu) {
+        [ONNMenuUtils downloadMenuForCafe:cafeName completion:^(NSDictionary * menu) {
             // Don't need to do anything here
         }];
     }

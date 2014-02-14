@@ -16,8 +16,8 @@ typedef NS_ENUM(NSInteger, CafeName) {
 
 @interface ONNMenuUtils : NSObject
 
-+(void) getMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSString *) ) completionHandler;
-+(void) downloadMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSString *) ) completionHandler;
++(void) getMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSDictionary *) ) completionHandler;
++(void) downloadMenuForCafe:(CafeName)cafeName completion:(void ( ^ )(NSDictionary *) ) completionHandler;
 +(void) deleteMenuForCafe:(CafeName)cafeName;
 +(NSString *) stringForCafe:(CafeName)cafeName;
 
