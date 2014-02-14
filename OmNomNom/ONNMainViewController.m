@@ -25,15 +25,19 @@ const int kNumMenus = LTD + 1;
     self = [super init];
     if (self) {
         // Custom initialization
+        [self _initialize];
     }
-    
+    return self;
+}
+
+- (void)_initialize
+{
     viewArray = [[NSMutableArray alloc] init];
-    
+
     for (NSInteger i = 0; i < kNumMenus; i++)
     {
         [viewArray addObject:[NSNull null]];
     }
-    return self;
 }
 
 - (void)viewDidLoad
