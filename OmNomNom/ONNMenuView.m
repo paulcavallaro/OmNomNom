@@ -18,6 +18,7 @@ UIImageView *_backgroundImageView;
 UILabel *_summary;
 NSString *_imageName;
 BOOL _menuOpen = NO;
+NSString *_cafeName;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -38,6 +39,10 @@ BOOL _menuOpen = NO;
     _textView.text = [self getMenuAsString:menu];
     _textView.font = [UIFont systemFontOfSize:16.0];
     _summary.text = menu[@"header"];
+    
+    NSLog(@"old %@", _cafeName);
+    NSLog(@"new %@", cafeName);
+    _cafeName = cafeName;
     [_label sizeToFit];
     [_textView sizeToFit];
     [_summary sizeToFit];
