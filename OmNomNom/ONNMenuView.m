@@ -7,13 +7,16 @@
 //
 
 #import "ONNMenuView.h"
+#import <CoreGraphics/CoreGraphics.h>
 
 @implementation ONNMenuView
 
 UILabel *_label;
 UITextView *_textView;
+UIView *_backgroundMaskView;
 UIImageView *_backgroundImageView;
 UILabel *_summary;
+NSString *_imageName;
 BOOL _menuOpen = NO;
 
 - (id)initWithFrame:(CGRect)frame
@@ -25,21 +28,30 @@ BOOL _menuOpen = NO;
     return self;
 }
 
-- (void) setCafeName:(NSString *)cafeName andMenu:(NSDictionary *)menu
+- (void) setCafeName:(NSString *)cafeName andMenu:(NSDictionary *)menu andImage:(NSString *)imageName
 {
+    if (imageName != _imageName) {
+        _imageName = imageName;
+        _backgroundImageView.image = [UIImage imageNamed:_imageName];
+    }
     _label.text = cafeName;
     _textView.text = [self getMenuAsString:menu];
     _textView.font = [UIFont systemFontOfSize:16.0];
+    _summary.text = menu[@"header"];
     [_label sizeToFit];
     [_textView sizeToFit];
+    [_summary sizeToFit];
     [self setNeedsLayout];
-    _summary.text = menu[@"header"];
 }
 
 - (void) _initialize
 {
-    _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cafe_Epic_Panorama"]];
+    _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:_imageName]];
     [self addSubview:_backgroundImageView];
+    _backgroundMaskView = [[UIView alloc] initWithFrame:CGRectZero];
+    _backgroundMaskView.backgroundColor = [[UIColor alloc] initWithRed:0.1f green:0.1f blue:0.1f alpha:0.4f];
+    [self addSubview:_backgroundMaskView];
+    //_maskView = [[UIView alloc] initWithFrame:CGRectZero];
 
     _label = [[UILabel alloc] initWithFrame:CGRectZero];
     _label.font = [UIFont boldSystemFontOfSize:18.0];
@@ -52,7 +64,7 @@ BOOL _menuOpen = NO;
     _label.text = NSLocalizedString(@"Loading...", @"Loading message of ONNMenuView");
     [_label sizeToFit];
     [self addSubview:_label];
-    
+
     _summary = [[UILabel alloc] initWithFrame:CGRectZero];
     _summary.text = @"Loading...";
     _summary.font = [UIFont boldSystemFontOfSize:18.0];
@@ -63,9 +75,7 @@ BOOL _menuOpen = NO;
     _summary.shadowOffset = CGSizeMake(0.0, 1.0);
     _summary.numberOfLines = 0; // wrap
     [self addSubview:_summary];
-    
-    
-    
+
     _textView = [[UITextView alloc] initWithFrame:CGRectZero];
     _textView.backgroundColor = [UIColor clearColor];
     _textView.textColor = [UIColor whiteColor];
@@ -84,8 +94,8 @@ BOOL _menuOpen = NO;
     _label.frame = CGRectMake(startX, labelY, _label.frame.size.width, _label.frame.size.height);
     _textView.frame = CGRectMake(margin, textViewY, self.frame.size.width - margin * 2, self.frame.size.height - textViewY);
     _backgroundImageView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
+    _backgroundMaskView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
     _summary.frame = CGRectMake(20, 360, 200, 80);
-
 }
 
 -(NSString *)getMenuAsString:(NSDictionary *)menu_json {
@@ -115,10 +125,8 @@ BOOL _menuOpen = NO;
     if (CGRectContainsPoint(_summary.frame, [touch locationInView:self]))
     {
         [_summary removeFromSuperview];
-        
-
-         
-         [self addSubview:_textView];
+        [self addSubview:_textView];
+        [self setNeedsLayout];
     }
 }
 

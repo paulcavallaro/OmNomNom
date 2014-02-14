@@ -24,6 +24,18 @@
     }
 }
 
++(NSString *) imageForCafe:(CafeName)cafeName
+{
+    switch (cafeName) {
+        case EPIC:
+            return @"Cafe_Epic_Panorama";
+        case LTD:
+            return @"Cafe_Epic_Panorama";
+        case NYC:
+            return @"Cafe_Epic_Panorama";
+    }
+}
+
 +(void) getMenuForCafe:(CafeName)cafeName completion:(void (^)(NSDictionary *))completionHandler
 {
     NSDictionary *fromDisk = [self readFromFileForCafe:cafeName];

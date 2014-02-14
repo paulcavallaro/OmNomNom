@@ -34,7 +34,7 @@
     ONNMenuView *menuView = [[ONNMenuView alloc] init];
     self.view = menuView;
     [ONNMenuUtils getMenuForCafe:self.cafeName completion:^(NSDictionary * last_post) {
-        [self.view setCafeName:[ONNMenuUtils stringForCafe:self.cafeName] andMenu:last_post];
+        [self.view setCafeName:[ONNMenuUtils stringForCafe:self.cafeName] andMenu:last_post andImage:[ONNMenuUtils imageForCafe:self.cafeName]];
         [self.view setNeedsLayout];
     }];
 }

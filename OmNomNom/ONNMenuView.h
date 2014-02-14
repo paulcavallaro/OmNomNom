@@ -10,6 +10,6 @@
 
 @interface ONNMenuView : UIView
 
-- (void) setCafeName:(NSString *)cafeName andMenu:(NSDictionary *)menu;
+- (void) setCafeName:(NSString *)cafeName andMenu:(NSDictionary *)menu andImage:(NSString *)imageName;
 
 @end
