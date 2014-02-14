@@ -31,6 +31,11 @@
         [self downloadMenuForCafe:cafeName completion:completionHandler];
     } else {
         completionHandler(fromDisk);
+        [self downloadMenuForCafe:cafeName completion:^(NSString * downloaded) {
+            if (![downloaded isEqualToString:fromDisk]) {
+                completionHandler(downloaded);
+            }
+        }];
     }
 }
 
