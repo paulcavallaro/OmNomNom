@@ -41,9 +41,11 @@ UIImageView *_backgroundImageView;
     _label = [[UILabel alloc] initWithFrame:CGRectZero];
     _label.font = [UIFont boldSystemFontOfSize:18.0];
     _label.backgroundColor = [UIColor clearColor];
-    _label.textColor = [UIColor blueColor];
+    _label.textColor = [UIColor whiteColor];
     _label.shadowColor = [UIColor blackColor];
     _label.shadowOffset = CGSizeMake(0.5f, 0.5f);
+    _label.shadowColor = [UIColor blackColor];
+    _label.shadowOffset = CGSizeMake(0.0, 1.0);
     _label.text = NSLocalizedString(@"Loading...", @"Loading message of ONNMenuView");
     [_label sizeToFit];
     [self addSubview:_label];
@@ -62,11 +64,11 @@ UIImageView *_backgroundImageView;
     [super layoutSubviews];
     CGFloat margin = 4.0f;
     CGFloat startX = floor((self.frame.size.width - _label.frame.size.width - margin)/2.0f);
-    CGFloat labelY = 20.0f;
+    CGFloat labelY = 25.0f;
     CGFloat textViewY = labelY + _label.frame.size.height;
     _label.frame = CGRectMake(startX, labelY, _label.frame.size.width, _label.frame.size.height);
     _textView.frame = CGRectMake(margin, textViewY, self.frame.size.width - margin * 2, self.frame.size.height - textViewY);
-    _backgroundImageView.frame = CGRectMake(0, labelY, self.frame.size.width, self.frame.size.height);
+    _backgroundImageView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
 }
 
 @end
