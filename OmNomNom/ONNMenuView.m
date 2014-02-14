@@ -138,8 +138,9 @@
     {
         [_summary removeFromSuperview];
         [self addSubview:_textView];
-        UIColor *tintColor = [UIColor colorWithWhite:0.31 alpha:0.23];
-        _backgroundImageView.image = [_backgroundImageView.image applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+        // Paul is lame and doesn't like the blur
+        //UIColor *tintColor = [UIColor colorWithWhite:0.31 alpha:0.23];
+        //_backgroundImageView.image = [_backgroundImageView.image applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
         [self setNeedsLayout];
     }
 }
