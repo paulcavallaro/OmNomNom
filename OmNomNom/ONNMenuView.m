@@ -94,12 +94,14 @@
     CGFloat startX = floor((self.frame.size.width - _label.frame.size.width - margin)/2.0f);
     CGFloat labelY = 35.0f;
     CGFloat textViewY = labelY + _label.frame.size.height;
+    CGFloat sideMargin = 20.0f;
+    CGFloat textWidth = self.frame.size.width - (2 * sideMargin);
     
     _label.frame = CGRectMake(startX, labelY, _label.frame.size.width, _label.frame.size.height);
     _textView.frame = CGRectMake(margin, textViewY, self.frame.size.width - margin * 2, self.frame.size.height - textViewY);
-    _backgroundImageView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
-    _backgroundMaskView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
-    _summary.frame = CGRectMake(20, self.frame.size.height - 100, self.frame.size.width, 80);
+    _backgroundImageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    _backgroundMaskView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    _summary.frame = CGRectMake(sideMargin, self.frame.size.height - 100, textWidth, 80);
 }
 
 -(NSString *)getMenuAsString:(NSDictionary *)menu_json {
