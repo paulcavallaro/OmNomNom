@@ -98,7 +98,7 @@
     [super layoutSubviews];
     CGFloat margin = 4.0f;
     CGFloat startX = floor((self.frame.size.width - _label.frame.size.width - margin)/2.0f);
-    CGFloat labelY = 35.0f;
+    CGFloat labelY = 15.0f;
     CGFloat textViewY = labelY + _label.frame.size.height;
     CGFloat sideMargin = 20.0f;
     CGFloat textWidth = self.frame.size.width - (2 * sideMargin);

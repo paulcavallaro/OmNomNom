@@ -65,6 +65,12 @@ const int kNumMenus = LTD + 1;
     [self.pageController didMoveToParentViewController:self];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    // Make full screen baby!
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
