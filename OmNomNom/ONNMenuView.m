@@ -9,16 +9,16 @@
 #import "ONNMenuView.h"
 #import <CoreGraphics/CoreGraphics.h>
 
-@implementation ONNMenuView
-
-UILabel *_label;
-UITextView *_textView;
-UIView *_backgroundMaskView;
-UIImageView *_backgroundImageView;
-UILabel *_summary;
-NSString *_imageName;
-BOOL _menuOpen = NO;
-NSString *_cafeName;
+@implementation ONNMenuView {
+    NSString *_cafeName;
+    UILabel *_label;
+    UITextView *_textView;
+    UIView *_backgroundMaskView;
+    UIImageView *_backgroundImageView;
+    UILabel *_summary;
+    NSString *_imageName;
+    BOOL _menuOpen;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
