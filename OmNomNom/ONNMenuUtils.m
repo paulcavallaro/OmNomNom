@@ -30,7 +30,7 @@
         case EPIC:
             return @"Cafe_Epic_Panorama";
         case LTD:
-            return @"Cafe_Epic_Panorama";
+            return @"LTD";
         case NYC:
             return @"NYC";
     }
