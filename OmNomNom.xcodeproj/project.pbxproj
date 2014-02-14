@@ -259,6 +259,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					6551FF6518ABEBF5008C7332 = {
+						DevelopmentTeam = U6C8DZX672;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -438,6 +439,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
@@ -446,6 +449,7 @@
 				GCC_PREFIX_HEADER = "OmNomNom/OmNomNom-Prefix.pch";
 				INFOPLIST_FILE = "OmNomNom/OmNomNom-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BAE347AC-02E5-4F64-AF83-0AD5F0A85B4E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -455,6 +459,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
@@ -463,6 +469,7 @@
 				GCC_PREFIX_HEADER = "OmNomNom/OmNomNom-Prefix.pch";
 				INFOPLIST_FILE = "OmNomNom/OmNomNom-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BAE347AC-02E5-4F64-AF83-0AD5F0A85B4E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
