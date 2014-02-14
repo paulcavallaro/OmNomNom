@@ -66,11 +66,11 @@ BOOL _menuOpen = NO;
     
     
     
-        _textView = [[UITextView alloc] initWithFrame:CGRectZero];
-        _textView.backgroundColor = [UIColor clearColor];
-        _textView.textColor = [UIColor whiteColor];
-        [_textView setEditable:NO];
-        [_textView setDirectionalLockEnabled:YES];
+    _textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    _textView.backgroundColor = [UIColor clearColor];
+    _textView.textColor = [UIColor whiteColor];
+    [_textView setEditable:NO];
+    [_textView setDirectionalLockEnabled:YES];
 
 }
 
