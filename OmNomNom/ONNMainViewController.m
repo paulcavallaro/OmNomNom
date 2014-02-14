@@ -40,6 +40,11 @@ const int kNumMenus = LTD + 1;
     }
 }
 
+- (void)loadView
+{
+    [super loadView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
