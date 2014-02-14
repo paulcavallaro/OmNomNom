@@ -8,6 +8,7 @@
 
 #import "ONNMenuView.h"
 #import <CoreGraphics/CoreGraphics.h>
+#import "UIImage+ImageEffects.h"
 
 @implementation ONNMenuView {
     NSString *_cafeName;
@@ -33,7 +34,8 @@
 {
     if (imageName != _imageName) {
         _imageName = imageName;
-        _backgroundImageView.image = [UIImage imageNamed:_imageName];
+        UIImage *image = [UIImage imageNamed:_imageName];
+        _backgroundImageView.image = image;
     }
     _label.text = cafeName;
     _textView.text = [self getMenuAsString:menu];
@@ -49,7 +51,11 @@
 
 - (void) _initialize
 {
-    _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:_imageName]];
+    UIImage *image =[UIImage imageNamed:_imageName];
+    
+    image = [image applyLightEffect];
+    
+    _backgroundImageView = [[UIImageView alloc] initWithImage:image];
     [self addSubview:_backgroundImageView];
     _backgroundMaskView = [[UIView alloc] initWithFrame:CGRectZero];
     _backgroundMaskView.backgroundColor = [[UIColor alloc] initWithRed:0.1f green:0.1f blue:0.1f alpha:0.4f];
@@ -132,6 +138,8 @@
     {
         [_summary removeFromSuperview];
         [self addSubview:_textView];
+        UIColor *tintColor = [UIColor colorWithWhite:0.31 alpha:0.23];
+        _backgroundImageView.image = [_backgroundImageView.image applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
         [self setNeedsLayout];
     }
 }
