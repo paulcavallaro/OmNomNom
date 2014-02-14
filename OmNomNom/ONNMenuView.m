@@ -13,6 +13,8 @@
 UILabel *_label;
 UITextView *_textView;
 UIImageView *_backgroundImageView;
+UILabel *_summary;
+BOOL _menuOpen = NO;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -31,6 +33,7 @@ UIImageView *_backgroundImageView;
     [_label sizeToFit];
     [_textView sizeToFit];
     [self setNeedsLayout];
+    _summary.text = menu[@"header"];
 }
 
 - (void) _initialize
@@ -49,14 +52,26 @@ UIImageView *_backgroundImageView;
     _label.text = NSLocalizedString(@"Loading...", @"Loading message of ONNMenuView");
     [_label sizeToFit];
     [self addSubview:_label];
+    
+    _summary = [[UILabel alloc] initWithFrame:CGRectZero];
+    _summary.text = @"Loading...";
+    _summary.font = [UIFont boldSystemFontOfSize:18.0];
+    _summary.textColor = [UIColor whiteColor];
+    _summary.shadowColor = [UIColor blackColor];
+    _summary.shadowOffset = CGSizeMake(0.5f, 0.5f);
+    _summary.shadowColor = [UIColor blackColor];
+    _summary.shadowOffset = CGSizeMake(0.0, 1.0);
+    _summary.numberOfLines = 0; // wrap
+    [self addSubview:_summary];
+    
+    
+    
+        _textView = [[UITextView alloc] initWithFrame:CGRectZero];
+        _textView.backgroundColor = [UIColor clearColor];
+        _textView.textColor = [UIColor whiteColor];
+        [_textView setEditable:NO];
+        [_textView setDirectionalLockEnabled:YES];
 
-    _textView = [[UITextView alloc] initWithFrame:CGRectZero];
-    _textView.backgroundColor = [UIColor clearColor];
-    _textView.textColor = [UIColor whiteColor];
-    [_textView setEditable:NO];
-    [_textView setDirectionalLockEnabled:YES];
-
-    [self addSubview:_textView];
 }
 
 - (void) layoutSubviews
@@ -69,8 +84,9 @@ UIImageView *_backgroundImageView;
     _label.frame = CGRectMake(startX, labelY, _label.frame.size.width, _label.frame.size.height);
     _textView.frame = CGRectMake(margin, textViewY, self.frame.size.width - margin * 2, self.frame.size.height - textViewY);
     _backgroundImageView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
-}
+    _summary.frame = CGRectMake(20, 360, 200, 80);
 
+}
 
 -(NSString *)getMenuAsString:(NSDictionary *)menu_json {
     NSString *menu = @"";
@@ -91,6 +107,19 @@ UIImageView *_backgroundImageView;
     
     return menu;
     
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    if (CGRectContainsPoint(_summary.frame, [touch locationInView:self]))
+    {
+        [_summary removeFromSuperview];
+        
+
+         
+         [self addSubview:_textView];
+    }
 }
 
 @end
