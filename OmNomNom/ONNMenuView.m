@@ -12,6 +12,7 @@
 
 UILabel *_label;
 UITextView *_textView;
+UIImageView *_backgroundImageView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -34,18 +35,24 @@ UITextView *_textView;
 
 - (void) _initialize
 {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.font = [UIFont boldSystemFontOfSize:18.0];
-    label.backgroundColor = [UIColor whiteColor];
-    label.text = NSLocalizedString(@"Loading...", @"Loading message of ONNMenuView");
-    [label sizeToFit];
-    _label = label;
+    _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cafe_Epic_Panorama"]];
+    [self addSubview:_backgroundImageView];
+
+    _label = [[UILabel alloc] initWithFrame:CGRectZero];
+    _label.font = [UIFont boldSystemFontOfSize:18.0];
+    _label.backgroundColor = [UIColor clearColor];
+    _label.textColor = [UIColor blueColor];
+    _label.shadowColor = [UIColor blackColor];
+    _label.shadowOffset = CGSizeMake(0.5f, 0.5f);
+    _label.text = NSLocalizedString(@"Loading...", @"Loading message of ONNMenuView");
+    [_label sizeToFit];
     [self addSubview:_label];
 
-    UITextView *textView = [[UITextView alloc] initWithFrame:self.frame];
-    [textView setEditable:NO];
-    [textView setDirectionalLockEnabled:YES];
-    _textView = textView;
+    _textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    _textView.backgroundColor = [UIColor clearColor];
+    _textView.textColor = [UIColor whiteColor];
+    [_textView setEditable:NO];
+    [_textView setDirectionalLockEnabled:YES];
 
     [self addSubview:_textView];
 }
@@ -59,6 +66,7 @@ UITextView *_textView;
     CGFloat textViewY = labelY + _label.frame.size.height;
     _label.frame = CGRectMake(startX, labelY, _label.frame.size.width, _label.frame.size.height);
     _textView.frame = CGRectMake(margin, textViewY, self.frame.size.width - margin * 2, self.frame.size.height - textViewY);
+    _backgroundImageView.frame = CGRectMake(0, labelY, self.frame.size.width, self.frame.size.height);
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6501A39318AE8BD600CD28BE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6501A39218AE8BD600CD28BE /* Media.xcassets */; };
 		6551FF6A18ABEBF5008C7332 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6551FF6918ABEBF5008C7332 /* Foundation.framework */; };
 		6551FF6C18ABEBF5008C7332 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6551FF6B18ABEBF5008C7332 /* CoreGraphics.framework */; };
 		6551FF6E18ABEBF5008C7332 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6551FF6D18ABEBF5008C7332 /* UIKit.framework */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6501A39218AE8BD600CD28BE /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		6551FF6618ABEBF5008C7332 /* OmNomNom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmNomNom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6551FF6918ABEBF5008C7332 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6551FF6B18ABEBF5008C7332 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +124,7 @@
 		6551FF5D18ABEBF5008C7332 = {
 			isa = PBXGroup;
 			children = (
+				6501A39218AE8BD600CD28BE /* Media.xcassets */,
 				6551FF6F18ABEBF5008C7332 /* OmNomNom */,
 				6551FF8818ABEBF5008C7332 /* OmNomNomTests */,
 				6551FF6818ABEBF5008C7332 /* Frameworks */,
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6551FF7418ABEBF5008C7332 /* InfoPlist.strings in Resources */,
+				6501A39318AE8BD600CD28BE /* Media.xcassets in Resources */,
 				6551FF7C18ABEBF5008C7332 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
