@@ -40,8 +40,6 @@
     _textView.font = [UIFont systemFontOfSize:16.0];
     _summary.text = menu[@"header"];
     
-    NSLog(@"old %@", _cafeName);
-    NSLog(@"new %@", cafeName);
     _cafeName = cafeName;
     [_label sizeToFit];
     [_textView sizeToFit];

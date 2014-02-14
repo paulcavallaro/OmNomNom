@@ -14,7 +14,9 @@
 
 @end
 
-@implementation ONNMainViewController
+@implementation ONNMainViewController {
+    NSMutableArray *viewArray;
+}
 
 const int kNumMenus = LTD + 1;
 
@@ -23,6 +25,13 @@ const int kNumMenus = LTD + 1;
     self = [super init];
     if (self) {
         // Custom initialization
+    }
+    
+    viewArray = [[NSMutableArray alloc] init];
+    
+    for (NSInteger i = 0; i < kNumMenus; i++)
+    {
+        [viewArray addObject:[NSNull null]];
     }
     return self;
 }
@@ -65,12 +74,15 @@ const int kNumMenus = LTD + 1;
 }
 
 - (ONNMenuViewController *)viewControllerAtIndex:(NSUInteger)index withFrame:(CGRect)frame {
-    ONNMenuViewController *singleMenuVC = [[ONNMenuViewController alloc] init];
-    singleMenuVC.idx = index;
-    singleMenuVC.cafeName = (CafeName)index;
-    singleMenuVC.view.frame = frame;
+    if ([viewArray[index] isEqual:[NSNull null]]) {
+        ONNMenuViewController *singleMenuVC = [[ONNMenuViewController alloc] init];
+        singleMenuVC.idx = index;
+        singleMenuVC.cafeName = (CafeName)index;
+        singleMenuVC.view.frame = frame;
+        viewArray[index] = singleMenuVC;
+    }
 
-    return singleMenuVC;
+    return viewArray[index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
