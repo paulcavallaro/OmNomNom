@@ -33,8 +33,10 @@ const int kNumMenus = LTD + 1;
 
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
 
+    // +40 because of paging control at bottom, don't need that
+    self.pageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height+40);
+
     self.pageController.dataSource = self;
-    [self.pageController.view setFrame:self.view.frame];
     [self.pageController.view setBackgroundColor:[UIColor whiteColor]];
 
     NSArray *viewControllers = [NSArray arrayWithObject:[self viewControllerAtIndex:0 withFrame:self.view.frame]];

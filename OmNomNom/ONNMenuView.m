@@ -59,7 +59,7 @@ NSString *_cafeName;
     //_maskView = [[UIView alloc] initWithFrame:CGRectZero];
 
     _label = [[UILabel alloc] initWithFrame:CGRectZero];
-    _label.font = [UIFont boldSystemFontOfSize:18.0];
+    _label.font = [UIFont boldSystemFontOfSize:22.0];
     _label.backgroundColor = [UIColor clearColor];
     _label.textColor = [UIColor whiteColor];
     _label.shadowColor = [UIColor blackColor];
@@ -94,13 +94,14 @@ NSString *_cafeName;
     [super layoutSubviews];
     CGFloat margin = 4.0f;
     CGFloat startX = floor((self.frame.size.width - _label.frame.size.width - margin)/2.0f);
-    CGFloat labelY = 25.0f;
+    CGFloat labelY = 35.0f;
     CGFloat textViewY = labelY + _label.frame.size.height;
+    
     _label.frame = CGRectMake(startX, labelY, _label.frame.size.width, _label.frame.size.height);
     _textView.frame = CGRectMake(margin, textViewY, self.frame.size.width - margin * 2, self.frame.size.height - textViewY);
     _backgroundImageView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
     _backgroundMaskView.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height);
-    _summary.frame = CGRectMake(20, 360, 200, 80);
+    _summary.frame = CGRectMake(20, self.frame.size.height - 100, self.frame.size.width, 80);
 }
 
 -(NSString *)getMenuAsString:(NSDictionary *)menu_json {
