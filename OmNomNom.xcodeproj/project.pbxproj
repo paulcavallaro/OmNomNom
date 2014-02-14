@@ -23,7 +23,6 @@
 		6551FFB518AC332C008C7332 /* ONNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FFB318AC332C008C7332 /* ONNMainViewController.m */; };
 		65CB9BDC18AD2C67000E1B52 /* ONNMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */; };
 		65CB9BDF18AD2CDB000E1B52 /* ONNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */; };
-		BB22D6AE18ABF3C9006C5694 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6AD18ABF3C9006C5694 /* Parse.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		BB22D6B018ABF40A006C5694 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */; };
 		BB22D6B218ABF411006C5694 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6B118ABF411006C5694 /* CFNetwork.framework */; };
 		BB22D6B418ABF41F006C5694 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6B318ABF41F006C5694 /* CoreLocation.framework */; };
@@ -71,7 +70,6 @@
 		65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuView.m; sourceTree = "<group>"; };
 		65CB9BDD18AD2CDB000E1B52 /* ONNMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuViewController.h; sourceTree = "<group>"; };
 		65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuViewController.m; sourceTree = "<group>"; };
-		BB22D6AD18ABF3C9006C5694 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB22D6B118ABF411006C5694 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB22D6B318ABF41F006C5694 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -102,7 +100,6 @@
 				BB22D6B218ABF411006C5694 /* CFNetwork.framework in Frameworks */,
 				BB22D6B018ABF40A006C5694 /* AudioToolbox.framework in Frameworks */,
 				6551FF6E18ABEBF5008C7332 /* UIKit.framework in Frameworks */,
-				BB22D6AE18ABF3C9006C5694 /* Parse.framework in Frameworks */,
 				6551FF6A18ABEBF5008C7332 /* Foundation.framework in Frameworks */,
 				BB22D6C418ABF6CD006C5694 /* FacebookSDK.framework in Frameworks */,
 			);
@@ -154,7 +151,6 @@
 				BB22D6B318ABF41F006C5694 /* CoreLocation.framework */,
 				BB22D6B118ABF411006C5694 /* CFNetwork.framework */,
 				BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */,
-				BB22D6AD18ABF3C9006C5694 /* Parse.framework */,
 				6551FF6918ABEBF5008C7332 /* Foundation.framework */,
 				6551FF6B18ABEBF5008C7332 /* CoreGraphics.framework */,
 				6551FF6D18ABEBF5008C7332 /* UIKit.framework */,

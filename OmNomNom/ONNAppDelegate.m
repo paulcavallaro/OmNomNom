@@ -6,7 +6,6 @@
 //
 //
 
-#import <Parse/Parse.h>
 #import "ONNAppDelegate.h"
 #import "ONNMainViewController.h"
 #import "ONNMenuUtils.h"
@@ -15,22 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Parse setApplicationId:@"eudS6DzxZFl48AasbVGRikoYRCne5ZKTAJYtjxRc"
-                  clientKey:@"6FA8WIsV5EjoWXWGLSubM7GfMhQtAGDoKCXHOVgS"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-
-    [PFFacebookUtils initializeFacebook];
-
-    [PFFacebookUtils logInWithPermissions:@[] block:^(PFUser *user, NSError *error) {
-        if (!user) {
-            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-        } else if (user.isNew) {
-            NSLog(@"User signed up and logged in through Facebook!");
-        } else {
-            NSLog(@"User logged in through Facebook!");
-        }
-    }];
-
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     if (application.applicationState != UIApplicationStateBackground) {
@@ -42,19 +25,6 @@
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
 
     return YES;
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    return [FBAppCall handleOpenURL:url
-                  sourceApplication:sourceApplication
-                        withSession:[PFFacebookUtils session]];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 + (NSString *) applicationDocumentsDirectory
