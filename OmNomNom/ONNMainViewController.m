@@ -93,7 +93,7 @@ const int kNumMenus = LTD + 1;
         ONNMenuViewController *singleMenuVC = [[ONNMenuViewController alloc] init];
         singleMenuVC.idx = index;
         singleMenuVC.cafeName = (CafeName)index;
-        singleMenuVC.view.frame = frame;
+        //singleMenuVC.view.frame = frame;
         viewArray[index] = singleMenuVC;
     }
 

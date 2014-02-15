@@ -21,9 +21,9 @@
 		6551FF8D18ABEBF5008C7332 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6551FF8B18ABEBF5008C7332 /* InfoPlist.strings */; };
 		6551FF8F18ABEBF5008C7332 /* OmNomNomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FF8E18ABEBF5008C7332 /* OmNomNomTests.m */; };
 		6551FFB518AC332C008C7332 /* ONNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6551FFB318AC332C008C7332 /* ONNMainViewController.m */; };
-		65CB9BDC18AD2C67000E1B52 /* ONNMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */; };
 		65CB9BDF18AD2CDB000E1B52 /* ONNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */; };
 		BB12615118AECD8E000BAF24 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = BB12615018AECD8E000BAF24 /* UIImage+ImageEffects.m */; };
+		BB12628F18AFFB8F000BAF24 /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BB12628E18AFFB8F000BAF24 /* UIImageView+LBBlurredImage.m */; };
 		BB22D6B018ABF40A006C5694 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */; };
 		BB22D6B218ABF411006C5694 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6B118ABF411006C5694 /* CFNetwork.framework */; };
 		BB22D6B418ABF41F006C5694 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6B318ABF41F006C5694 /* CoreLocation.framework */; };
@@ -33,6 +33,7 @@
 		BB22D6BC18ABF44F006C5694 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6BB18ABF44F006C5694 /* Security.framework */; };
 		BB22D6BE18ABF456006C5694 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6BD18ABF456006C5694 /* StoreKit.framework */; };
 		BB22D6C018ABF45E006C5694 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB22D6BF18ABF45E006C5694 /* SystemConfiguration.framework */; };
+		BB2B6BD118B00954004CC3F8 /* epic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB2B6BD018B00954004CC3F8 /* epic.jpg */; };
 		BB2E715E18AC105F0062FC14 /* ONNMenuUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2E715D18AC105F0062FC14 /* ONNMenuUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -66,12 +67,12 @@
 		6551FF8E18ABEBF5008C7332 /* OmNomNomTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OmNomNomTests.m; sourceTree = "<group>"; };
 		6551FFB218AC332C008C7332 /* ONNMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMainViewController.h; sourceTree = "<group>"; };
 		6551FFB318AC332C008C7332 /* ONNMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMainViewController.m; sourceTree = "<group>"; };
-		65CB9BDA18AD2C67000E1B52 /* ONNMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuView.h; sourceTree = "<group>"; };
-		65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuView.m; sourceTree = "<group>"; };
 		65CB9BDD18AD2CDB000E1B52 /* ONNMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuViewController.h; sourceTree = "<group>"; };
 		65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuViewController.m; sourceTree = "<group>"; };
 		BB12614F18AECD8E000BAF24 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		BB12615018AECD8E000BAF24 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		BB12628D18AFFB8F000BAF24 /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
+		BB12628E18AFFB8F000BAF24 /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
 		BB22D6AF18ABF40A006C5694 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB22D6B118ABF411006C5694 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB22D6B318ABF41F006C5694 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -81,6 +82,7 @@
 		BB22D6BB18ABF44F006C5694 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BB22D6BD18ABF456006C5694 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BB22D6BF18ABF45E006C5694 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BB2B6BD018B00954004CC3F8 /* epic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = epic.jpg; sourceTree = "<group>"; };
 		BB2E715C18AC105F0062FC14 /* ONNMenuUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNMenuUtils.h; sourceTree = "<group>"; };
 		BB2E715D18AC105F0062FC14 /* ONNMenuUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNMenuUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				6501A39218AE8BD600CD28BE /* Media.xcassets */,
+				BB2B6BD018B00954004CC3F8 /* epic.jpg */,
 				6551FF6F18ABEBF5008C7332 /* OmNomNom */,
 				6551FF8818ABEBF5008C7332 /* OmNomNomTests */,
 				6551FF6818ABEBF5008C7332 /* Frameworks */,
@@ -161,12 +164,12 @@
 		6551FF6F18ABEBF5008C7332 /* OmNomNom */ = {
 			isa = PBXGroup;
 			children = (
+				BB12628D18AFFB8F000BAF24 /* UIImageView+LBBlurredImage.h */,
+				BB12628E18AFFB8F000BAF24 /* UIImageView+LBBlurredImage.m */,
 				BB12614F18AECD8E000BAF24 /* UIImage+ImageEffects.h */,
 				BB12615018AECD8E000BAF24 /* UIImage+ImageEffects.m */,
 				6551FFB218AC332C008C7332 /* ONNMainViewController.h */,
 				6551FFB318AC332C008C7332 /* ONNMainViewController.m */,
-				65CB9BDA18AD2C67000E1B52 /* ONNMenuView.h */,
-				65CB9BDB18AD2C67000E1B52 /* ONNMenuView.m */,
 				65CB9BDD18AD2CDB000E1B52 /* ONNMenuViewController.h */,
 				65CB9BDE18AD2CDB000E1B52 /* ONNMenuViewController.m */,
 				6551FF7818ABEBF5008C7332 /* ONNAppDelegate.h */,
@@ -256,7 +259,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					6551FF6518ABEBF5008C7332 = {
-						DevelopmentTeam = U6C8DZX672;
+						DevelopmentTeam = 7HR883TP5M;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -291,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2B6BD118B00954004CC3F8 /* epic.jpg in Resources */,
 				6551FF7418ABEBF5008C7332 /* InfoPlist.strings in Resources */,
 				6501A39318AE8BD600CD28BE /* Media.xcassets in Resources */,
 				6551FF7C18ABEBF5008C7332 /* Images.xcassets in Resources */,
@@ -313,12 +317,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6551FF7A18ABEBF5008C7332 /* ONNAppDelegate.m in Sources */,
-				65CB9BDC18AD2C67000E1B52 /* ONNMenuView.m in Sources */,
 				BB12615118AECD8E000BAF24 /* UIImage+ImageEffects.m in Sources */,
 				65CB9BDF18AD2CDB000E1B52 /* ONNMenuViewController.m in Sources */,
 				6551FFB518AC332C008C7332 /* ONNMainViewController.m in Sources */,
 				BB2E715E18AC105F0062FC14 /* ONNMenuUtils.m in Sources */,
 				6551FF7618ABEBF5008C7332 /* main.m in Sources */,
+				BB12628F18AFFB8F000BAF24 /* UIImageView+LBBlurredImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +451,7 @@
 				GCC_PREFIX_HEADER = "OmNomNom/OmNomNom-Prefix.pch";
 				INFOPLIST_FILE = "OmNomNom/OmNomNom-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BAE347AC-02E5-4F64-AF83-0AD5F0A85B4E";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -467,7 +471,7 @@
 				GCC_PREFIX_HEADER = "OmNomNom/OmNomNom-Prefix.pch";
 				INFOPLIST_FILE = "OmNomNom/OmNomNom-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BAE347AC-02E5-4F64-AF83-0AD5F0A85B4E";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -27,7 +27,7 @@
 {
     switch (cafeName) {
         case EPIC:
-            return @"Cafe_Epic_Panorama";
+            return @"epic.jpg";
         case LTD:
             return @"LTD";
         case NYC:
