@@ -74,10 +74,12 @@
     [self.view addSubview:backgroundMaskView];
     
     self.tableView = [[UITableView alloc] init];
+
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
+    self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableView];
     
     CGRect headerFrame = [UIScreen mainScreen].bounds;
@@ -140,7 +142,7 @@
 
 // 2
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -148,7 +150,7 @@
         return 0;
     }
     
-    return [self.menu[@"sections"] count];
+    return [self.menu[@"sections"] count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -163,27 +165,49 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     
-    NSDictionary *section = [self.menu[@"sections"] objectAtIndex:indexPath.row];
-    NSString *menu = section[@"name"];
-    menu = [menu stringByAppendingString:@"\n"];
-    for (NSString * item in section[@"items"]) {
-        menu = [menu stringByAppendingString:item];
-        menu = [menu stringByAppendingString:@"\n"];
-    }
-    cell.textLabel.text = menu;
     cell.textLabel.numberOfLines = 0;
+
+    cell.textLabel.text = [self getTextForCell:indexPath.row];
     [cell sizeToFit];
     
     return cell;
+}
+
+-(CGFloat)heightForText:(NSString *)text
+{
+    NSInteger MAX_HEIGHT = 2000;
+    UITextView * textView = [[UITextView alloc] initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, MAX_HEIGHT)];
+    textView.text = text;
+    textView.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    [textView sizeToFit];
+    return textView.frame.size.height;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: measure text to get this
-    return 200;
+    if (self.menu == nil) {
+        return 50;
+    }
+    return [self heightForText:[self getTextForCell:indexPath.row]];
+}
+
+- (NSString *)getTextForCell:(NSInteger) row {
+    if (row == 0) {
+        return self.menu[@"header"];
+    }
+    
+    NSDictionary *section = [self.menu[@"sections"] objectAtIndex:row - 1];
+    NSString *menu = section[@"name"];
+    menu = [menu stringByAppendingString:@"\n"];
+    for (NSString * item in section[@"items"]) {
+        menu = [menu stringByAppendingString:item];
+        menu = [menu stringByAppendingString:@"\n"];
+    }
+    return menu;
 }
 
 - (void)viewWillLayoutSubviews {

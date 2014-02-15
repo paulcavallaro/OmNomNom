@@ -55,7 +55,7 @@ const int kNumMenus = LTD + 1;
     self.pageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height+40);
 
     self.pageController.dataSource = self;
-    [self.pageController.view setBackgroundColor:[UIColor whiteColor]];
+    [self.pageController.view setBackgroundColor:[UIColor blackColor]];
 
     NSArray *viewControllers = [NSArray arrayWithObject:[self viewControllerAtIndex:0 withFrame:self.view.frame]];
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
