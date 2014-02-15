@@ -21,6 +21,8 @@
 @property (nonatomic, assign) CGFloat screenHeight;
 @property (nonatomic, strong) UILabel *summaryLabel;
 @property (nonatomic, strong) NSDictionary *menu;
+@property (nonatomic, strong) UILabel *cafeNameLabel;
+
 
 @end
 
@@ -56,12 +58,14 @@
     
     self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.backgroundImageView.clipsToBounds = YES;
     [self.view addSubview:self.backgroundImageView];
     
     self.blurredImageView = [[UIImageView alloc] init];
     self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.blurredImageView.alpha = 0;
     [self.blurredImageView setImageToBlur:background blurRadius:10 completionBlock:nil];
+    self.blurredImageView.clipsToBounds = YES;
     [self.view addSubview:self.blurredImageView];
     
     UIView *backgroundMaskView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -120,6 +124,7 @@
     self.summaryLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50];
     self.summaryLabel.text = text;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -202,6 +207,7 @@
     // 3
     self.blurredImageView.alpha = percent;
 }
+
 
 
 
