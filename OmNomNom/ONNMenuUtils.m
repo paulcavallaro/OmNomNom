@@ -56,7 +56,10 @@
     
     NSDictionary *response= [self downloadMenuJSON:cafeName];
     
-    [self writeToFile:data forCafe:cafeName];
+    if (data != nil) {
+        // if we got data, save to file
+        [self writeToFile:data forCafe:cafeName];
+    }
     completionHandler(response);
 }
 
@@ -78,10 +81,20 @@
 
 +(NSDictionary *)downloadMenuJSON:(CafeName) cafe {
     NSData *data = [self downloadMenuJSONData:cafe];
-    
+    if (data == nil) {
+        // Failed to download
+        return nil;
+    }
+
     NSError *error;
-    return (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:
-                                            NSJSONReadingMutableContainers error:&error];
+    NSDictionary *resp = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data
+                                                                         options:NSJSONReadingMutableContainers
+                                                                           error:&error];
+    if (error != nil) {
+        // Return nil on error
+        return nil;
+    }
+    return resp;
 }
 
 
