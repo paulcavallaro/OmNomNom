@@ -49,9 +49,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self.view setFrame:self.view.window.frame];
-    
-    
 
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     UIImage *background = [UIImage imageNamed:[ONNMenuUtils imageForCafe:self.cafeName]];
@@ -59,20 +56,13 @@
     self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.backgroundImageView.clipsToBounds = YES;
-    [self.view addSubview:self.backgroundImageView];
-    
-    self.blurredImageView = [[UIImageView alloc] init];
-    self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.blurredImageView.alpha = 0;
-    [self.blurredImageView setImageToBlur:background blurRadius:10 completionBlock:nil];
-    self.blurredImageView.clipsToBounds = YES;
-    [self.view addSubview:self.blurredImageView];
-    
     UIView *backgroundMaskView = [[UIView alloc] initWithFrame:CGRectZero];
-    backgroundMaskView.backgroundColor = [[UIColor alloc] initWithRed:0.1f green:0.1f blue:0.1f alpha:0.2f];
+    backgroundMaskView.backgroundColor = [[UIColor alloc] initWithRed:0.1f green:0.1f blue:0.1f alpha:0.4f];
+
     backgroundMaskView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.screenHeight);
+    [self.view addSubview:self.backgroundImageView];
     [self.view addSubview:backgroundMaskView];
-    
+
     self.tableView = [[UITableView alloc] init];
 
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -82,39 +72,6 @@
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableView];
     
-    CGRect headerFrame = [UIScreen mainScreen].bounds;
-    CGFloat inset = 20;
-    CGFloat summaryHeight = 210;
-    
-    CGRect summaryFrame= CGRectMake(inset,
-                                         headerFrame.size.height - (summaryHeight),
-                                         headerFrame.size.width - (2 * inset),
-                                         summaryHeight);
-    
-    UIView *header = [[UIView alloc] initWithFrame:headerFrame];
-    header.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = header;
-    
-
-    self.summaryLabel = [[UILabel alloc] initWithFrame:summaryFrame];
-    self.summaryLabel.backgroundColor = [UIColor clearColor];
-    self.summaryLabel.textColor = [UIColor whiteColor];
-    self.summaryLabel.numberOfLines = 0; //
-    self.summaryLabel.shadowColor = [UIColor blackColor];
-    self.summaryLabel.shadowOffset = CGSizeMake(0.5f, 0.5f);
-    self.summaryLabel.shadowColor = [UIColor blackColor];
-    self.summaryLabel.shadowOffset = CGSizeMake(0.0, 1.0);
-    [self setSummaryText:@"Loading..."];
-    [header addSubview:self.summaryLabel];
-    
-    UILabel *cafeNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 30)];
-    cafeNameLabel.backgroundColor = [UIColor clearColor];
-    cafeNameLabel.textColor = [UIColor whiteColor];
-    cafeNameLabel.text = [ONNMenuUtils stringForCafe:self.cafeName];
-    cafeNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-    cafeNameLabel.textAlignment = NSTextAlignmentCenter;
-    [header addSubview:cafeNameLabel];
-    
     [ONNMenuUtils getMenuForCafe:self.cafeName completion:^(NSDictionary * last_post) {
         [self setSummaryText:last_post[@"header"]];
         self.menu = last_post;
@@ -123,7 +80,7 @@
 }
 
 -(void)setSummaryText:(NSString *)text {
-    self.summaryLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50];
+    self.summaryLabel.font = [self getHeaderFont];
     self.summaryLabel.text = text;
 }
 
@@ -150,7 +107,7 @@
         return 0;
     }
     
-    return [self.menu[@"sections"] count] + 1;
+    return [self.menu[@"sections"] count] + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -161,27 +118,31 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-    // 3
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+    cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    if (indexPath.row == 0) {
+        cell.textLabel.font = [self getHeaderFont];
+    } else {
+        cell.textLabel.font = [self getItemFont];
+    }
+    cell.textLabel.text = [self getTextForCell:indexPath.row];
     
     cell.textLabel.numberOfLines = 0;
 
-    cell.textLabel.text = [self getTextForCell:indexPath.row];
     [cell sizeToFit];
     
     return cell;
 }
 
--(CGFloat)heightForText:(NSString *)text
+-(CGFloat)heightForText:(NSString *)text font:(UIFont *)font
 {
-    NSInteger MAX_HEIGHT = 2000;
+    NSInteger MAX_HEIGHT = 20000;
     UITextView * textView = [[UITextView alloc] initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, MAX_HEIGHT)];
     textView.text = text;
-    textView.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    textView.font = font;
     [textView sizeToFit];
+    NSLog(@"%f", textView.frame.size.height);
     return textView.frame.size.height;
 }
 
@@ -192,21 +153,29 @@
     if (self.menu == nil) {
         return 50;
     }
-    return [self heightForText:[self getTextForCell:indexPath.row]];
+    UIFont *font;
+    if (indexPath.row == 0) {
+        font = [self getHeaderFont];
+    } else {
+        font = [self getItemFont];
+    }
+    return [self heightForText:[self getTextForCell:indexPath.row] font:font];
 }
 
 - (NSString *)getTextForCell:(NSInteger) row {
     if (row == 0) {
+        return [ONNMenuUtils stringForCafe:self.cafeName];
         return self.menu[@"header"];
     }
     
-    NSDictionary *section = [self.menu[@"sections"] objectAtIndex:row - 1];
+    if (row == 1) {
+        return self.menu[@"header"];
+    }
+    
+    NSDictionary *section = [self.menu[@"sections"] objectAtIndex:row - 2];
     NSString *menu = section[@"name"];
     menu = [menu stringByAppendingString:@"\n"];
-    for (NSString * item in section[@"items"]) {
-        menu = [menu stringByAppendingString:item];
-        menu = [menu stringByAppendingString:@"\n"];
-    }
+    menu = [menu stringByAppendingString:[section[@"items"] componentsJoinedByString:@"\n"]];
     return menu;
 }
 
@@ -218,6 +187,14 @@
     self.backgroundImageView.frame = bounds;
     self.blurredImageView.frame = bounds;
     self.tableView.frame = bounds;
+}
+
+-(UIFont *)getHeaderFont {
+    return [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50];
+}
+
+-(UIFont *)getItemFont {
+    return [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
 }
 
 #pragma mark - UIScrollViewDelegate
