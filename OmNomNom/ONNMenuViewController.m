@@ -57,7 +57,7 @@
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.backgroundImageView.clipsToBounds = YES;
     UIView *backgroundMaskView = [[UIView alloc] initWithFrame:CGRectZero];
-    backgroundMaskView.backgroundColor = [[UIColor alloc] initWithRed:0.1f green:0.1f blue:0.1f alpha:0.4f];
+    backgroundMaskView.backgroundColor = [[UIColor alloc] initWithRed:0.1f green:0.1f blue:0.1f alpha:0.8f];
 
     backgroundMaskView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.screenHeight);
     [self.view addSubview:self.backgroundImageView];
