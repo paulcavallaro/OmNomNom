@@ -38,12 +38,13 @@
 +(void) getMenuForCafe:(CafeName)cafeName completion:(void (^)(NSDictionary *))completionHandler
 {
     NSDictionary *fromDisk = [self readFromFileForCafe:cafeName];
+    fromDisk = [[NSDictionary alloc] init];
     if (fromDisk == nil) {
         [self downloadMenuForCafe:cafeName completion:completionHandler];
     } else {
         completionHandler(fromDisk);
         [self downloadMenuForCafe:cafeName completion:^(NSDictionary * downloaded) {
-            if (![downloaded isEqualToDictionary:fromDisk]) {
+            if (YES || ![downloaded isEqualToDictionary:fromDisk]) {
                 completionHandler(downloaded);
             }
         }];
@@ -52,15 +53,19 @@
 
 +(void) downloadMenuForCafe:(CafeName)cafeName completion:(void (^)(NSDictionary *))completionHandler
 {
-    NSData *data = [self downloadMenuJSONData:cafeName];
-    
-    NSDictionary *response= [self downloadMenuJSON:cafeName];
-    
-    if (data != nil) {
-        // if we got data, save to file
-        [self writeToFile:data forCafe:cafeName];
-    }
-    completionHandler(response);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *data = [self downloadMenuJSONData:cafeName];
+        
+        NSDictionary *response= [self downloadMenuJSON:cafeName];
+        
+        if (data != nil) {
+            // if we got data, save to file
+            [self writeToFile:data forCafe:cafeName];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            completionHandler(response);
+        });
+    });
 }
 
 +(NSData *)downloadMenuJSONData:(CafeName) cafe {

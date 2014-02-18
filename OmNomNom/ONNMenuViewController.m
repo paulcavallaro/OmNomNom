@@ -76,6 +76,7 @@
         if (last_post != nil) {
             [self setSummaryText:last_post[@"header"]];
             self.menu = last_post;
+            [self.tableView reloadData];
         } else {
             // last_post == nil means we failed to download or read from disk
             // tel the user there was an error and ask to pull to refresh
