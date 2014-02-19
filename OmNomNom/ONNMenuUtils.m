@@ -38,7 +38,6 @@
 +(void) getMenuForCafe:(CafeName)cafeName completion:(void (^)(NSDictionary *))completionHandler
 {
     NSDictionary *fromDisk = [self readFromFileForCafe:cafeName];
-    fromDisk = [[NSDictionary alloc] init];
     if (fromDisk == nil) {
         [self downloadMenuForCafe:cafeName completion:completionHandler];
     } else {
