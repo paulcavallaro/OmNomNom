@@ -114,13 +114,7 @@
         return 0;
     }
     
-    int count = [self.menu[@"sections"] count] + 2;
-    
-    if (self.cafeName == NYC) {
-        return count - 1;
-    }
-    
-    return count;
+    return [self.menu[@"sections"] count] + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -134,7 +128,6 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    
     if (indexPath.row == 0) {
         cell.textLabel.font = [self getHeaderFont];
     } else {
@@ -144,11 +137,6 @@
     
     cell.textLabel.numberOfLines = 0;
 
-    if (cell.textLabel.frame.size.width < 50) {
-        cell.textLabel.frame = CGRectMake(cell.textLabel.frame.origin.x, cell.textLabel.frame.origin.y, 250, cell.textLabel.frame.size.height);
-    }
-    NSLog(@"%@ %f", cell.textLabel.text, cell.textLabel.frame.size.width);
-    
     [cell sizeToFit];
     
     return cell;
@@ -161,6 +149,7 @@
     textView.text = text;
     textView.font = font;
     [textView sizeToFit];
+    NSLog(@"%f", textView.frame.size.height);
     return textView.frame.size.height;
 }
 
